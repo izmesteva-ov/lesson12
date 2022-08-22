@@ -1,0 +1,26 @@
+---
+version: '3.7'
+services:
+  webapp:
+    build:
+      context: app/
+    volumes:
+      - data:/app/App42PaaS-Java-MySQL-Sample/target/
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: demo
+      MYSQL_ROOT_PASSWORD: demo
+    ports:
+      - 3306:3306
+    volumes:
+      - mysqdb:/var/lib/mysql
+
+volumes:
+  data:
+  mysqldb:
