@@ -13,7 +13,7 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: testdb
-      MYSQL_USER: user
+      MYSQL_USER: admin
       MYSQL_PASSWORD: demo
       MYSQL_ROOT_PASSWORD: demo
     ports:
@@ -28,10 +28,11 @@ services:
     ports:
        - 8080:8080
     environment:
-        MYSQL_USER: user
+        MYSQL_USER: admin
         MYSQL_PASSWORD: demo
         MYSQL_ROOT_PASSWORD: demo
         MYSQL_DATABASE: testdb
+        MYSQL_IP: mysql
     depends_on:
       - webapp
       - mysql
