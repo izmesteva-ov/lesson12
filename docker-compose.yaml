@@ -1,5 +1,5 @@
 ---
-version: '3.7'
+version: '3'
 services:
   webapp:
     build:
@@ -22,7 +22,7 @@ services:
       - mysqldb:/var/lib/mysql
 
   prod:
-    image: tomcat
+    image: tomcat:6
     volumes:
       - data:/usr/local/tomcat/webapps/
     ports:
