@@ -5,3 +5,5 @@ WORKDIR /app
 RUN git clone https://github.com/shephertz/App42PaaS-Java-MySQL-Sample.git /app
 
 RUN mvn package
+
+COPY ./Config.properties /app/conf/
