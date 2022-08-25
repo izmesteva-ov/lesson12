@@ -6,13 +6,14 @@ services:
       context: app/
     volumes:
       - data:/app/App42PaaS-Java-MySQL-Sample/target/
+      - conf:/app/conf
 
   mysql:
-    image: mysql:5.7
+    image: mysql:5.6
     container_name: mysql
     restart: always
     environment:
-      MYSQL_DATABASE: testdb
+      MYSQL_DATABASE: db
       MYSQL_USER: admin
       MYSQL_PASSWORD: demo
       MYSQL_ROOT_PASSWORD: demo
@@ -25,13 +26,14 @@ services:
     image: tomcat:6
     volumes:
       - data:/usr/local/tomcat/webapps/
+      - conf:/usr/local/tomcat/ROOT
     ports:
        - 8080:8080
     environment:
         MYSQL_USER: admin
         MYSQL_PASSWORD: demo
         MYSQL_ROOT_PASSWORD: demo
-        MYSQL_DATABASE: testdb
+        MYSQL_DATABASE: db
         MYSQL_IP: mysql
     depends_on:
       - webapp
@@ -39,3 +41,4 @@ services:
 volumes:
   data:
   mysqldb:
+  conf: 
